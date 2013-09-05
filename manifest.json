@@ -1,6 +1,6 @@
 {
   "manifest_version": 2,
-  "name": "Todo list",
+  "name": "To-Dos",
   "version": "1",
   "minimum_chrome_version": "23",
   "icons": {
