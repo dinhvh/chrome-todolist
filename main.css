@@ -1,0 +1,75 @@
+body {
+  font-family: Helvetica;
+}
+
+html, body {
+  height: 100%;
+}
+
+#title {
+  display: inline-block;
+  font-size: 20px;
+  margin-top: 10px;
+}
+
+input[type="text"] {
+  display: inline-block;
+  margin-left: 10px;
+  width: calc(100% - 30px);
+  border: none;
+  box-shadow: none;
+  outline: none;
+}
+
+/*
+input[type="text"]:selected {
+  border: 1px solid #ccc;
+}
+*/
+
+input[type="text"]:focus {
+  border: 1px solid #ccc;
+}
+
+#header {
+  position: relative;
+  height: 40px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+#add-button {
+  position: absolute;
+  right: 18px;
+  top: 7px;
+  height: 25px;
+  width: 25px;
+  padding-top: 1px;
+  padding-left: 8px;
+  /*
+  background-image: none;
+  */
+  outline: none;
+}
+
+#list {
+  padding-top: 10px;
+  padding-left: 20px;
+  padding-right: 10px;
+  height: calc(100% - 31px);
+  padding-bottom: 20px;
+  /*height: 100%;*/
+  overflow: scroll;
+}
+
+input[type="checkbox"]:checked~input[type="text"] {
+  text-decoration:line-through;
+}
+
+/*
+.task {
+    transition: margin 0.5s, height: 0.5s;
+}
+*/

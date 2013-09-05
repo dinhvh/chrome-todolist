@@ -1,0 +1,23 @@
+{
+  "manifest_version": 2,
+  "name": "Todo list",
+  "version": "1",
+  "minimum_chrome_version": "23",
+  "icons": {
+    "16": "icon_16.png",
+    "128": "icon_128.png"
+  },
+  "app": {
+    "background": {
+      "scripts": ["background.js"]
+    }
+  },
+  "permissions": [
+    "contextMenus",
+    { "fileSystem": ["write"] },
+    "unlimitedStorage",
+    "syncFileSystem",
+    "storage",
+    "https://github.com/*"
+  ]
+}
