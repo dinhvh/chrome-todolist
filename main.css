@@ -21,12 +21,6 @@ input[type="text"] {
   outline: none;
 }
 
-/*
-input[type="text"]:selected {
-  border: 1px solid #ccc;
-}
-*/
-
 input[type="text"]:focus {
   border: 1px solid #ccc;
 }
@@ -48,9 +42,6 @@ input[type="text"]:focus {
   width: 25px;
   padding-top: 1px;
   padding-left: 8px;
-  /*
-  background-image: none;
-  */
   outline: none;
 }
 
@@ -60,16 +51,9 @@ input[type="text"]:focus {
   padding-right: 10px;
   height: calc(100% - 31px);
   padding-bottom: 20px;
-  /*height: 100%;*/
   overflow: scroll;
 }
 
 input[type="checkbox"]:checked~input[type="text"] {
   text-decoration:line-through;
 }
-
-/*
-.task {
-    transition: margin 0.5s, height: 0.5s;
-}
-*/
