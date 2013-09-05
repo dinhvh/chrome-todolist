@@ -14,5 +14,5 @@ html, body {
 input[type="text"] {
   display: inline-block;
   margin-left: 10px;
-  width: calc(100% - 30px);
+  width: calc(100% - 50px);
 }
