@@ -6,7 +6,6 @@ var task_id = 1;
 
 var setup = function() {
   $('#add-button').text('Add Task');
-  $('#add-button').text('+');
   $('#add-button').click(function(event) {
     addTask(task_id, '');
     task_id ++;
