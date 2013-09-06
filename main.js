@@ -12,6 +12,18 @@ var setup = function() {
     addTask(task_id, '');
     task_id ++;
   });
+
+  chrome.syncFileSystem.onFileStatusChanged.addListener(function(detail) {
+    if (detail.direction == 'remote_to_local') {
+      console.log('remote change pushing');
+      $('#list').empty();
+      loadData(function() {
+        console.log($('.task'));
+        addTaskIfNeeded();
+        focusEnabled = true;
+      });
+    }
+  });
   
   loadData(function() {
     console.log($('.task'));
