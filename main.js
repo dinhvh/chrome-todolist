@@ -3,6 +3,7 @@ $(function () {
 });
 
 var task_id = 1;
+var focusEnabled = false;
 
 var setup = function() {
   $('#add-button').text('Add Task');
@@ -15,6 +16,7 @@ var setup = function() {
   loadData(function() {
     console.log($('.task'));
     addTaskIfNeeded();
+    focusEnabled = true;
   });
 };
 
@@ -50,7 +52,9 @@ var addTask = function(task_id, title) {
   scheduleSave();
   
   var tasktitle = $('#task-' + task_id + ' input[type=text]');
-  tasktitle.focus();
+  if (focusEnabled) {
+    tasktitle.focus();
+  }
   tasktitle.on('input', function(the_task_id, event) {
     scheduleSave();
   }.bind(this, task_id));
