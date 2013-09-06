@@ -77,6 +77,7 @@ var addTask = function(task_id, title) {
 var scheduledSave = false;
 
 var scheduleSave = function() {
+  /*
   if (scheduledSave) {
     return;
   }
@@ -101,9 +102,11 @@ var scheduleSave = function() {
     //console.log(serializeData());
     scheduledSave = false;
   }, 2000);
+  */
 };
 
 var loadData = function(callback) {
+  /*
   window.webkitRequestFileSystem(window.PERSISTENT, 5*1024*1024*1024, function(fs) {
     fs.root.getFile('contents', {}, function(fileEntry) {
       fileEntry.file(function(file) {
@@ -120,6 +123,7 @@ var loadData = function(callback) {
       callback();
     });
   });
+  */
 };
 
 var serializedData = function() {
