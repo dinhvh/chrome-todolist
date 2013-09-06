@@ -57,7 +57,7 @@ var scheduleSave = function() {
   
   scheduledSave = true;
   setTimeout(function() {
-    chrome.syncFileSystem.requestFileSystem(function(fs) {
+    window.webkitRequestFileSystem(window.PERSISTENT, 5*1024*1024*1024, function(fs) {
       fs.root.getFile('contents', {create: true}, function(createdEntry) {
         createdEntry.createWriter(function(writer) {
           var blob = new Blob([serializedData()], {type: 'text/plain'});
@@ -78,7 +78,7 @@ var scheduleSave = function() {
 };
 
 var loadData = function(callback) {
-  chrome.syncFileSystem.requestFileSystem(function(fs) {
+  window.webkitRequestFileSystem(window.PERSISTENT, 5*1024*1024*1024, function(fs) {
     fs.root.getFile('contents', {}, function(fileEntry) {
       fileEntry.file(function(file) {
         var reader = new FileReader();
