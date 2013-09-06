@@ -77,14 +77,13 @@ var addTask = function(task_id, title) {
 var scheduledSave = false;
 
 var scheduleSave = function() {
-  /*
   if (scheduledSave) {
     return;
   }
   
   scheduledSave = true;
   setTimeout(function() {
-    window.webkitRequestFileSystem(window.PERSISTENT, 5*1024*1024*1024, function(fs) {
+    chrome.syncFileSystem.requestFileSystem(function(fs) {
       fs.root.getFile('contents', {create: true}, function(createdEntry) {
         createdEntry.createWriter(function(writer) {
           var blob = new Blob([serializedData()], {type: 'text/plain'});
@@ -102,12 +101,10 @@ var scheduleSave = function() {
     //console.log(serializeData());
     scheduledSave = false;
   }, 2000);
-  */
 };
 
 var loadData = function(callback) {
-  /*
-  window.webkitRequestFileSystem(window.PERSISTENT, 5*1024*1024*1024, function(fs) {
+  chrome.syncFileSystem.requestFileSystem(function(fs) {
     fs.root.getFile('contents', {}, function(fileEntry) {
       fileEntry.file(function(file) {
         var reader = new FileReader();
@@ -123,7 +120,6 @@ var loadData = function(callback) {
       callback();
     });
   });
-  */
 };
 
 var serializedData = function() {
