@@ -1,7 +1,8 @@
 {
+  "key": "rokesenaroke",
   "manifest_version": 2,
   "name": "To-Dos",
-  "version": "3",
+  "version": "7",
   "minimum_chrome_version": "23",
   "icons": {
     "16": "icon_16.png",

@@ -3,6 +3,7 @@ $(function () {
 });
 
 var task_id = 1;
+var focusEnabled = false;
 
 var setup = function() {
   $('#add-button').text('Add Task');
@@ -10,10 +11,23 @@ var setup = function() {
     addTask(task_id, '');
     task_id ++;
   });
+
+  chrome.syncFileSystem.onFileStatusChanged.addListener(function(detail) {
+    if (detail.direction == 'remote_to_local') {
+      console.log('remote change pushing');
+      $('#list').empty();
+      loadData(function() {
+        console.log($('.task'));
+        addTaskIfNeeded();
+        focusEnabled = true;
+      });
+    }
+  });
   
   loadData(function() {
     console.log($('.task'));
     addTaskIfNeeded();
+    focusEnabled = true;
   });
 };
 
@@ -31,7 +45,9 @@ var addTask = function(task_id, title) {
   scheduleSave();
   
   var tasktitle = $('#task-' + task_id + ' input[type=text]');
-  tasktitle.focus();
+  if (focusEnabled) {
+    tasktitle.focus();
+  }
   tasktitle.on('input', function(the_task_id, event) {
     scheduleSave();
   }.bind(this, task_id));
@@ -57,7 +73,7 @@ var scheduleSave = function() {
   
   scheduledSave = true;
   setTimeout(function() {
-    window.webkitRequestFileSystem(window.PERSISTENT, 5*1024*1024*1024, function(fs) {
+    chrome.syncFileSystem.requestFileSystem(function(fs) {
       fs.root.getFile('contents', {create: true}, function(createdEntry) {
         createdEntry.createWriter(function(writer) {
           var blob = new Blob([serializedData()], {type: 'text/plain'});
@@ -78,7 +94,7 @@ var scheduleSave = function() {
 };
 
 var loadData = function(callback) {
-  window.webkitRequestFileSystem(window.PERSISTENT, 5*1024*1024*1024, function(fs) {
+  chrome.syncFileSystem.requestFileSystem(function(fs) {
     fs.root.getFile('contents', {}, function(fileEntry) {
       fileEntry.file(function(file) {
         var reader = new FileReader();
